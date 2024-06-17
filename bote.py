@@ -1,5 +1,6 @@
 import requests
 import telebot
+import user_agent
 from telebot import types
 import os
 from vip import Tele
@@ -64,6 +65,7 @@ def strip(message):
 		ccnn = 0
 		nosh = 0
 		nod = 0
+		resk = 0
 		
 		doon = '''
 تم ايقاف فحص الملف بنجاح ✅
@@ -147,11 +149,13 @@ def strip(message):
 					
 					cm8 = types.InlineKeyboardButton(f"عدد بطاقات الملف »» [ {total} ] •", callback_data='x')
 					
-					cm9 = types.InlineKeyboardButton(f"all total {ch}+{dd}+{live}+{nod}+{nosh}+{ccnn}",callback_data='x')
+					cm9 = types.InlineKeyboardButton(f"resk ❌ [ {resk} ] ", callback_data='x')
+					
+					cm10 = types.InlineKeyboardButton(f"all total {ch}+{dd}+{live}+{nod}+{nosh}+{ccnn}",callback_data='x')
 					
 					stop=types.InlineKeyboardButton("توقف عن الفحص✋", callback_data='stop')
 					
-					mes.add(status,cm1,cm2,cm3, cm4, cm5,cm6,cm7,cm8,cm9,stop)
+					mes.add(status,cm1,cm2,cm3, cm4, cm5,cm6,cm7,cm8,cm9,cm10,stop)
 										
 					if total >= 100001:
 						bot.reply_to(message,'''
@@ -243,7 +247,120 @@ def strip(message):
 						else:
 							dd+=1
 
+					elif 'Declined - Call Issuer' in last:
+						if dd == 0:
+							dd+=2
+						else:
+							dd+=1
+					
+					elif 'Limit Exceeded' in last:
+						if dd == 0:
+							dd+=2
+						else:
+							dd+=1
+							
+					elif 'No Such Issuer' in last:
+						if dd == 0:
+							dd+=2
+						else:
+							dd+=1
 						
+					elif 'Expilastd Card' in last:
+						if dd == 0:
+							dd+=2
+						else:
+							dd+=1
+					
+				
+					elif 'Issuer or Cardholder has put a restriction on the card' in last:
+						if dd == 0:
+							dd+=2
+						else:
+							dd+=1
+							
+					elif 'No Account' in last:
+						if dd == 0:
+							dd+=2
+						else:
+							dd+=1
+						
+					elif 'Card Not Activated' in last:
+						if dd == 0:
+							dd+=2
+						else:
+							dd+=1
+						
+					elif 'Closed Card' in last:
+						if dd == 0:
+							dd+=2
+						else:
+							dd+=1
+				
+					elif 'Card Issuer Declined CVV' in last:
+						ccnn+=1
+						bot.reply_to(message,ccn)
+						
+					elif 'Transaction Not Allowed' in last:
+						if dd == 0:
+							dd+=2
+						else:
+							dd+=1
+						
+					elif 'Do Not Honor' in last:
+						if dd == 0:
+							dd+=2
+						else:
+							dd+=1
+						
+						
+					elif 'Call Issuer. Pick Up Card' in last:
+						if dd == 0:
+							dd+=2
+						else:
+							dd+=1
+						
+					elif 'Invalid Transaction' in last:
+						if dd == 0:
+							dd+=2
+						else:
+							dd+=1
+				
+					elif 'Processor Declined' in last:
+						if dd == 0:
+							dd+=2
+						else:
+							dd+=1
+					
+					
+					elif 'risk_threshold' in last or  'Gateway Rejected' in last:
+						if resk == 0:
+							resk+=2
+						else:
+							resk+=1
+				
+						
+					elif 'Cannot Authorize at this time (Policy)' in last:
+						if dd == 0:
+							dd+=2
+						else:
+							dd+=1
+						
+					elif 'Security Violation' in last:
+						if dd == 0:
+							dd+=2
+						else:
+							dd+=1
+						
+					elif 'Checkout/Receipt?OrderNumber' in last:
+						if dd == 0:
+							dd+=2
+						else:
+							dd+=1
+						
+					elif 'Insufficient Funds' in last:
+						ch += 1
+						bot.reply_to(message,charge)
+
 					elif 'Your card does not support this type of purchase.' in last:
 						nosh+=1
 						
@@ -267,6 +384,7 @@ def strip(message):
 						
 						
 					else:
+						print(last)
 						requests.post(f'https://api.telegram.org/bot{tok}/sendMessage?chat_id={idd}&text={cc}\n{iid}\n{last}')
 						
 		except Exception as e:
