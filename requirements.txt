@@ -1,4 +1,3 @@
-os
 anyio==4.2.0
 autopep8==2.0.4
 beautifulsoup4==4.12.3
