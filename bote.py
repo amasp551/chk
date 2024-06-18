@@ -259,7 +259,7 @@ def strip(message):
 »» @EbrahimEldsoky""")				
 					
 					
-					if "Your card was declined" in last or "Your card's security code is invalid" in last or 'Invalid account' in last or  'Your card number is incorrect' in last or 'Your card number is incorrect' in last or "Your card's expiration month is invalid" in last or "Your card's expiration month is invalid" in last or "Your card's expiration year is invalid" in last or "The Year field is required." in last or "This PaymentIntent's payment_method could not be updated because it has a status of canceled. You may only update the payment_method of a PaymentIntent with one of the following statuses: requires_payment_method, requires_confirmation, requires_action." in last or 'Authentication Required:' in last:
+					if "Your card was declined"  in last or 'Invalid account' in last or  'Your card number is incorrect' in last or 'Your card number is incorrect' in last or "Your card's expiration month is invalid" in last or "Your card's expiration month is invalid" in last or "Your card's expiration year is invalid" in last or "The Year field is required." in last or "This PaymentIntent's payment_method could not be updated because it has a status of canceled. You may only update the payment_method of a PaymentIntent with one of the following statuses: requires_payment_method, requires_confirmation, requires_action." in last or 'Authentication Required:' in last:
 						if dd == 0:
 							dd+=2
 						else:
@@ -314,7 +314,7 @@ def strip(message):
 						else:
 							dd+=1
 				
-					elif 'Card Issuer Declined CVV' in last:
+					elif "Your card's security code is invalid" in last:
 						ccnn+=1
 						bot.reply_to(message,ccn)
 						
@@ -375,7 +375,7 @@ def strip(message):
 						else:
 							dd+=1
 						
-					elif 'Insufficient Funds' in last:
+					elif 'insufficient funds' in last:
 						ch += 1
 						bot.reply_to(message,nomo)
 
