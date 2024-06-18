@@ -1,6 +1,7 @@
 import requests
 import telebot
 import user_agent
+import time
 from telebot import types
 import os
 from vip import Tele
