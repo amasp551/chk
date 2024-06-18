@@ -1,10 +1,12 @@
 import requests
+import user_agent
 def Tele(ccx):
 		ccx=ccx.strip()
 		n = ccx.split("|")[0]
 		mm = ccx.split("|")[1]
 		yy = ccx.split("|")[2][-2:]
 		cvc = ccx.split("|")[3]
+		user = str(user_agent.generate_user_agent)
 		
 		headers = {
 		    'authority': 'parentgateway.prod.mathletics.com',
@@ -19,7 +21,7 @@ def Tele(ccx):
 		    'sec-fetch-dest': 'empty',
 		    'sec-fetch-mode': 'cors',
 		    'sec-fetch-site': 'same-site',
-		    'user-agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36',
+		    'user-agent': user,
 		}
 		
 		json_data = {
@@ -78,7 +80,7 @@ def Tele(ccx):
 		    'sec-fetch-dest': 'empty',
 		    'sec-fetch-mode': 'cors',
 		    'sec-fetch-site': 'same-site',
-		    'user-agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36',
+		    'user-agent': user,
 		}
 		
 		data = {
@@ -108,7 +110,7 @@ def Tele(ccx):
 		    'sec-fetch-dest': 'empty',
 		    'sec-fetch-mode': 'cors',
 		    'sec-fetch-site': 'same-site',
-		    'user-agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36',
+		    'user-agent': user,
 		    'x-requested-with': 'XMLHttpRequest',
 		}
 		
