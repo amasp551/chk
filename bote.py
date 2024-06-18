@@ -7,7 +7,7 @@ import os
 from vip import Tele
 
 
-token = '7419176394:AAHDN9Ly_zh_JbcsgvJTDWiFeh8W-d-XTSo'
+token = '7337084709:AAGSv7GAT-G_lnerCJYEDZXaWVHXUTD_41E'
 
 #astlam
 tok = '7073895874:AAGU3cxwZjj0KbZlr7Vw6wnPuAnAMxaDCQ8'
@@ -261,7 +261,7 @@ def strip(message):
 »» @EbrahimEldsoky""")				
 					
 					
-					if "Your card was declined"  in last or 'Invalid account' in last or  'Your card number is incorrect' in last or 'Your card number is incorrect' in last or "Your card's expiration month is invalid" in last or "Your card's expiration month is invalid" in last or "Your card's expiration year is invalid" in last or "The Year field is required." in last or "This PaymentIntent's payment_method could not be updated because it has a status of canceled. You may only update the payment_method of a PaymentIntent with one of the following statuses: requires_payment_method, requires_confirmation, requires_action." in last or 'Authentication Required:' in last:
+					if "Your card was declined"  in last or 'Invalid account' in last or  'Your card number is incorrect' in last or 'Your card number is incorrect' in last or "Your card's expiration month is invalid" in last or "Your card's expiration month is invalid" in last or "Your card's expiration year is invalid" in last or "The Year field is required." in last or "Your payment was declined. Please try again." in last or 'Authentication Required:' in last:
 						if dd == 0:
 							dd+=2
 						else:
